@@ -27,20 +27,9 @@ OBJ_DIR  	:= _objs
 
 # Files
 NAME	 	 	:= so_long
-SRC_FILES		:=	ft_stack_init.c \
-					push_swap.c \
-					ft_math.c \
-					ft_movements.c \
-					ft_w_movements.c \
-					ft_putstr.c \
-					ft_new_t_irray.c \
-					ft_sort.c \
-					ft_sort2.c \
-					ft_checker.c \
-					ft_t_irray_pop.c \
-					ft_t_irray_copy.c \
-					ft_free_t_irray.c
-HEADER_FILES	:= push_swap.h
+SRC_FILES		:=	
+					
+HEADER_FILES	:= so_long.h
 OBJ_FILES		:= $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
 
 # Macro to run target in all subdirs
