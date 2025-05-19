@@ -6,7 +6,7 @@
 /*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:56:05 by lspiteri          #+#    #+#             */
-/*   Updated: 2025/04/30 20:24:15 by lspiteri         ###   ########.fr       */
+/*   Updated: 2025/05/20 01:17:45 by lspiteri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_putstr(char *s);
 char	**ft_split(const char *s, char c);
 void	ft_free_arrstr(char ***arr, int i);
 char	*ft_strchr(const char *str0, int c);
-int		ft_findchr(const char *str, int c)
+int		ft_findchr(const char *str, int c);
 char	*ft_strdup(const char *s1);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin(const char *s1, const char *s2);

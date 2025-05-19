@@ -1,4 +1,4 @@
-#include "./structures.h"
+/*#include "./structures.h"
 
 #include <stdio.h>
 int	ft_print_point(s_point2d point)
@@ -20,3 +20,4 @@ int	main(int argc, char **argv)
 	printf("%d\n", i);
 	return (0);
 }
+*/
