@@ -8,7 +8,7 @@ static int	get_value(t_map *map, t_point coord)
 	return ((int) map->array[coord.x + coord.y * (map->max.x + 2)]);
 }
 
-static int	set_value(t_map *map, t_point coord, unsigned char value)
+static int	set_value(t_map *map, t_point coord, char value)
 {
 	if (coord.x > map->max.x || coord.y > map->max.y)
 		return (-1);

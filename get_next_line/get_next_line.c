@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./get_next_line.h"
 
 static char	*ft_makeline(char **s1, const char *s2, int s2_len)
 {
@@ -20,7 +20,7 @@ static char	*ft_makeline(char **s1, const char *s2, int s2_len)
 	char	*str;
 
 	i = 0;
-	s1_len = ft_strlen(*s1);
+	s1_len = ft_gnl_strlen(*s1);
 	str = malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!str)
 		return (NULL);
@@ -42,7 +42,7 @@ static char	*ft_makeline(char **s1, const char *s2, int s2_len)
 static char	*return_line(char *line, char (*save)[BUFFER_SIZE], int size)
 {
 	ft_bzero(*save, BUFFER_SIZE);
-	ft_strlcpy(*save, line + size + 1, ft_strlen(line) - size);
+	ft_strlcpy(*save, line + size + 1, ft_gnl_strlen(line) - size);
 	line[size + 1] = '\0';
 	return (line);
 }
@@ -58,7 +58,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	readbytes = fd >= 0;
 	if (save[0])
-		line = ft_makeline(&line, save, ft_strlen(save));
+		line = ft_makeline(&line, save, ft_gnl_strlen(save));
 	while (readbytes > 0)
 	{
 		nlindex = ft_findchr(line, '\n');
@@ -72,6 +72,6 @@ char	*get_next_line(int fd)
 			line = ft_makeline(&line, buffer, BUFFER_SIZE);
 	}
 	if (readbytes == 0 && line)
-		return (return_line(line, &save, ft_strlen(line) - 1));
+		return (return_line(line, &save, ft_gnl_strlen(line) - 1));
 	return (ft_free(&line), NULL);
 }

@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "./../libft/_srcs/libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000000
@@ -28,9 +29,6 @@
 char	*get_next_line(int fd);
 
 void	ft_free(char **str);
-ssize_t	ft_strlen(const char *s);
-ssize_t	ft_findchr(const char *str0, int c0);
-ssize_t	ft_strlcpy(char *dst0, const char *src0, ssize_t dstsize);
-void	ft_bzero(void *s, ssize_t n);
+ssize_t	ft_gnl_strlen(const char *s);
 
 #endif

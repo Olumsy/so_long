@@ -8,6 +8,7 @@
 
 void	ft_map_init(t_map *map);
 char	*get_next_line(int fd);
+int	ft_read_map(t_map *map, int fd);
 
 
 #endif

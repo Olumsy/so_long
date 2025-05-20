@@ -22,13 +22,14 @@ AR		:= ar rcs
 # Directories
 SRC_DIR   	:= _srcs
 HEADER_DIR	:= _srcs
-SUBDIRS		:= libft get_next_line
+SUBDIRS		:= libft  get_next_line
 OBJ_DIR  	:= _objs
 
 # Files
 NAME	 	 	:= so_long
 SRC_FILES		:=	map.c \
 					so_long.c \
+					read_map.c \
 					
 HEADER_FILES	:= so_long.h
 OBJ_FILES		:= $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
@@ -51,7 +52,8 @@ $(NAME):	$(OBJ_DIR) $(OBJ_FILES)
 # Compilation of source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 			@echo "Compiling $<"
-			@$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) -c $< -o $@ 
+
 
 # Creating necessary directories
 $(OBJ_DIR):
