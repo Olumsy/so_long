@@ -1,4 +1,5 @@
-/*#include "./structures.h"
+/*
+#include "./so_long.h"
 
 #include <stdio.h>
 int	ft_print_point(s_point2d point)
@@ -8,16 +9,7 @@ int	ft_print_point(s_point2d point)
 
 int	main(int argc, char **argv)
 {
-	_Bool i = 0;
-
-	printf("%d\n", i);
-	i = 1;
-	printf("%d\n", i);
-	i = 2;
-	printf("%d\n", i);
-	i = 0;
-	i--;
-	printf("%d\n", i);
+	printf("ft	
 	return (0);
 }
 */

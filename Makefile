@@ -27,7 +27,10 @@ OBJ_DIR  	:= _objs
 
 # Files
 NAME	 	 	:= so_long
-SRC_FILES		:=
+SRC_FILES		:= main.c \
+					map.c \
+					read_map.c \
+					so_long.c \
 					
 					
 HEADER_FILES	:= so_long.h

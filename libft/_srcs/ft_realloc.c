@@ -18,7 +18,9 @@ char	*ft_realloc(char *str, int size)
 	int		len;
 
 	if (!str)
-		return (ft_calloc(sizeof(char), size));
+		return (str = ft_calloc(sizeof(char), size), str);
+	if ((int)ft_strlen(str) == size)
+		return (str);
 	new = ft_calloc(sizeof(char), size);
 	if (!new)
 		return (free(str), NULL);
