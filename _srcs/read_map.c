@@ -1,6 +1,24 @@
 
 #include "./so_long.h"
 
+static char	*ft_get_file(fd)
+{
+	int	readbyte;
+	char	*str;
+
+	readbyte = 1;
+	while (readbyte)
+	{
+		
+		ft_realloc(str, total_len + 1);
+		ft_strlcat(str, temp, ft_strlen(str));
+		free(temp);
+		temp = NULL;
+		temp = get_next_line(fd);
+		total_len += len;
+	}
+}
+
 int	ft_read_map(t_map *map, int fd)
 {
 	int		len;

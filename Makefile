@@ -6,7 +6,7 @@
 #    By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 14:50:49 by lspiteri          #+#    #+#              #
-#    Updated: 2025/05/20 01:30:39 by lspiteri         ###   ########.fr        #
+#    Updated: 2025/05/20 01:30:14 by lspiteri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,15 +21,14 @@ AR		:= ar rcs
 
 # Directories
 SRC_DIR   	:= _srcs
-HEADER_DIR	:= _srcs
-SUBDIRS		:= libft  get_next_line
+HEADER_DIR	:= .
+SUBDIRS		:= libft
 OBJ_DIR  	:= _objs
 
 # Files
 NAME	 	 	:= so_long
-SRC_FILES		:=	map.c \
-					so_long.c \
-					read_map.c \
+SRC_FILES		:=
+					
 					
 HEADER_FILES	:= so_long.h
 OBJ_FILES		:= $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
@@ -47,13 +46,12 @@ all:		$(NAME)
 $(NAME):	$(OBJ_DIR) $(OBJ_FILES)
 			@echo "Creating $(NAME)\n"
 			$(call run_on_subdirs,all)
-			@$(CC) -o $(NAME) $(OBJ_FILES) libft/libft.a get_next_line/gnl.a
+			@$(CC) -o $(NAME) $(OBJ_FILES) libft/libft.a
 
 # Compilation of source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 			@echo "Compiling $<"
-			@$(CC) $(CFLAGS) -c $< -o $@ 
-
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 # Creating necessary directories
 $(OBJ_DIR):
