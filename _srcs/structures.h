@@ -9,7 +9,7 @@ typedef struct s_point
 
 typedef struct s_map
 {
-	char	*array;
+	char	**array;
 	t_point	max;
 	_Bool	it_legit;	
 	int		(*get_value)(t_map *, t_point);

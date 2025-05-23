@@ -21,14 +21,12 @@ static char	*ft_get_file(int fd)
 	return (str);
 }
 
-/*
 int	ft_read_map(t_map *map, int fd)
 {
 	int		len;
 	int		total_len;
 	char	*temp;
 
-	//secu
 	temp = get_next_line(fd);
 	len = ft_strlen(temp);
 	total_len = len;
@@ -45,7 +43,6 @@ int	ft_read_map(t_map *map, int fd)
 	}
 	return (0);
 }
-*/
 
 #include <stdio.h>
 int	main(int argc, char **argv)
