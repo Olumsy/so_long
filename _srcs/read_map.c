@@ -8,6 +8,7 @@ static char	*ft_get_file(int fd)
 	char	buff[BUFFER_SIZE];
 	char	*str;
 
+	str = NULL;
 	total_len = 0;
 	readbyte = 1;
 	while (readbyte)
@@ -21,6 +22,7 @@ static char	*ft_get_file(int fd)
 	return (str);
 }
 
+/*
 int	ft_read_map(t_map *map, int fd)
 {
 	int		len;
@@ -43,6 +45,7 @@ int	ft_read_map(t_map *map, int fd)
 	}
 	return (0);
 }
+*/
 
 #include <stdio.h>
 int	main(int argc, char **argv)
