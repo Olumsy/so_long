@@ -40,3 +40,10 @@ t_point ft_findchr_2d(t_map *map, char c)
 	}
 	return ((t_point) {-1, -1});
 }
+
+/*
+t_point ft_strdup_2d(t_map *map)
+{
+	;
+}
+*/
