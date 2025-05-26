@@ -15,3 +15,15 @@ typedef struct s_map
 	char	(*get_value)(t_map *, t_point);
 	int		(*set_value)(t_map *, t_point, char);
 }	t_map;
+
+typedef union
+{
+	struct
+	{
+		char	up;
+		char	down;
+		char	left;
+		char	right;
+	} s_dir;
+	char	dirs[4];
+}	u_cardinal;

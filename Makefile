@@ -31,6 +31,7 @@ SRC_FILES		:= main.c \
 					map.c \
 					read_map.c \
 					so_long.c \
+					backtracking.c \
 					
 					
 HEADER_FILES	:= so_long.h
