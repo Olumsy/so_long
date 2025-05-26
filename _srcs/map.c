@@ -1,18 +1,18 @@
 
 #include "./so_long.h"
 
-static int	get_value(t_map *map, t_point coord)
+static char	get_value(t_map *map, t_point coord)
 {
 	if (coord.x > map->max.x || coord.y > map->max.y)
 		return (-1);
-	return ((int) map->array[coord.x + coord.y * (map->max.x + 2)]);
+	return (map->array[coord.y][coord.x]);
 }
 
 static int	set_value(t_map *map, t_point coord, char value)
 {
 	if (coord.x > map->max.x || coord.y > map->max.y)
 		return (-1);
-	map->array[coord.x + coord.y * (map->max.x + 2)] = value;
+	map->array[coord.y][coord.x] = value;
 	return (0);
 }
 

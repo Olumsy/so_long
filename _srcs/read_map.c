@@ -22,37 +22,70 @@ static char	*ft_get_file(int fd)
 	return (str);
 }
 
-/*
 int	ft_read_map(t_map *map, int fd)
 {
-	int		len;
-	int		total_len;
-	char	*temp;
+	int	len;
+	int	y;
 
-	temp = get_next_line(fd);
-	len = ft_strlen(temp);
-	total_len = len;
-	while (temp)
+	map->array = ft_split(ft_get_file(fd), '\n');
+	y = 0;
+	len = ft_strlen(map->array[y]);
+	while (map->array[y])
 	{
-		if ((int) ft_strlen(temp) != len)
-			return (free(temp), 1);
-		ft_realloc(map->array, total_len + 1);
-		ft_strlcat(map->array, temp, ft_strlen(map->array));
-		free(temp);
-		temp = NULL;
-		temp = get_next_line(fd);
-		total_len += len;
+		if ((int) ft_strlen(map->array[y++]) != len)
+			return (-1);
 	}
+	map->max = (t_point) {len, y};
 	return (0);
 }
-*/
+
+static t_point	ft_advance(t_point *map, t_point *pos)
+{
+	t_point	nhbr;
+	int		x[4];
+	int		y[4];
+	int		i;
+
+	x = {0, 0, -1, 1};
+	y = {1, -1, 0, 0};
+	i = 0;
+	while (i < 4)
+	{
+		nhbr = {pos->x + x[i], pos->y + y[i]};
+		if (map->get_value(nhbr) != 1 && \
+			 map->get_value(nhbr) != -1)
+			return (*pos = nhbr, 0);
+		i++;
+	}
+	return (1);
+}
+
+static int	ft_backtracking(t_map *map)
+{
+	;	
+}
 
 #include <stdio.h>
 int	main(int argc, char **argv)
 {
 	int	fd;
+	int	x;
+	int	y;
+	t_map	map;
 
+	(void) argc;
+	ft_map_init(&map);
 	fd = open(argv[1], O_RDONLY);
-	printf("%s\n", ft_get_file(fd));
+	ft_read_map(&map, fd);
+	int	i = 0;
+	while (map.array[i])
+	{
+		printf("%s\n", map.array[i++]);
+	}
+	y = 0;
+	while (scanf("%d%d", &x, &y))
+	{
+		printf("> %c\n", map.get_value(&map, ft_advance(&map, t_point){x, y}));
+	}
 	return (0);
 }
