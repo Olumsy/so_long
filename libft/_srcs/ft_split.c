@@ -34,9 +34,12 @@ static int	ft_count_word(const char *s, char c)
 	return (count);
 }
 
-void	ft_free_arrstr(char ***arr, int i)
+void	ft_free_2d(char ***arr)
 {
-	while (i >= 0)
+	int	i;
+
+	i = 0;
+	while ((*arr)[i])
 	{
 		free((*arr)[i]);
 		i--;
@@ -80,7 +83,7 @@ char	**ft_split(const char *s, char c)
 			arr[wc] = ft_fill_str(s, c);
 			if (!arr[wc])
 			{
-				ft_free_arrstr(&arr, wc);
+				ft_free_2d(&arr);
 				return (NULL);
 			}
 			s += ft_strlen(arr[wc++]);

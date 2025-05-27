@@ -38,7 +38,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putstr(char *s);
 char	**ft_split(const char *s, char c);
-void	ft_free_arrstr(char ***arr, int i);
+void	ft_free_2d(char ***arr);
 char	*ft_strchr(const char *str0, int c);
 int		ft_findchr(const char *str, int c);
 char	*ft_strdup(const char *s1);

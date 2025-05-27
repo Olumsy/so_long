@@ -25,7 +25,7 @@ void	ft_map_init(t_map *map)
 	map->set_value = set_value;
 }
 
-t_point ft_findchr_2d(t_map *map, char c)
+t_point	ft_findchr_2d(t_map *map, char c)
 {
 	int	y;
 	int	x;
@@ -41,9 +41,21 @@ t_point ft_findchr_2d(t_map *map, char c)
 	return ((t_point) {-1, -1});
 }
 
-/*
-t_point ft_strdup_2d(t_map *map)
+char	**ft_strdup_2d(t_map *map)
 {
-	;
+	int		y;
+	char	**dup;
+
+	dup = malloc(sizeof(char *) * map->max.y);
+	if (!dup)
+		return (NULL);
+	y = 0;
+	while (y < map->max.y)
+	{
+		dup[y] = ft_strdup(map->array[y]);
+		if (!dup[y])
+			return (ft_free_2d(&dup), NULL);
+		y++;
+	}
+	return (dup);
 }
-*/
