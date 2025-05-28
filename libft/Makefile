@@ -15,7 +15,7 @@
 # ============================================================================ #
 # Compiler and Flags
 CC		:= cc
-CFLAGS	:= -Wall -Wextra -Werror -I.
+CFLAGS	:= -Wall -Wextra -Werror -I. -g
 RM		:= rm -rf
 AR		:= ar rcs
 

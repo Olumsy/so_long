@@ -42,7 +42,7 @@ void	ft_free_2d(char ***arr)
 	while ((*arr)[i])
 	{
 		free((*arr)[i]);
-		i--;
+		i++;
 	}
 	free(*arr);
 	*arr = NULL;

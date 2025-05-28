@@ -57,5 +57,6 @@ char	**ft_strdup_2d(t_map *map)
 			return (ft_free_2d(&dup), NULL);
 		y++;
 	}
+	dup[y] = NULL;
 	return (dup);
 }

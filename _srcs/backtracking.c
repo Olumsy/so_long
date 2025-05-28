@@ -28,7 +28,6 @@ static int	ft_flood(t_map *map, t_point current)
 	map->set_value(map, current, '1');
 	int	i = 0;
 	printf("------------\n  ABCDEFGHIJKL\n\n");
-	usleep(30000);
 	while (map->array[i])
 	{
 		printf("%d %s\n", i, map->array[i]);
@@ -39,12 +38,19 @@ static int	ft_flood(t_map *map, t_point current)
 	return (0);
 }
 
-int	ft_backtracking(t_map *map)
+int	ft_backtracking(t_map *src)
 {
-	ft_flood(map, ft_findchr_2d(map, 'P'));
-	return ((ft_findchr_2d(map, 'C').x >= 0 || \
-		ft_findchr_2d(map, 'P').x >= 0|| \
-		ft_findchr_2d(map, 'E').x >= 0));
+	t_map	map;
+	int		rvalue;
+
+	ft_map_init(&map);
+	map.array = ft_strdup_2d(src);
+	map.max = (t_point) {src->max.x, src->max.y};
+	ft_flood(&map, ft_findchr_2d(&map, 'P'));
+	rvalue = (ft_findchr_2d(&map, 'C').x >= 0 || \
+		ft_findchr_2d(&map, 'P').x >= 0|| \
+		ft_findchr_2d(&map, 'E').x >= 0);
+	return (ft_free_2d(&(map.array)), rvalue);
 }
 
 #include <stdio.h>
