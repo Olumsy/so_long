@@ -1,0 +1,7 @@
+*	Parse to check if the map is surrounded by walls.
+
+*	Parse to check the number of players. (Should be 1)
+
+*	Implement game mechanics : movements, walls, collection, exit.
+
+*	Implement MLX graphics.
