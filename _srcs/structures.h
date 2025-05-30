@@ -11,9 +11,9 @@ typedef struct s_map
 {
 	char	**array;
 	t_point	max;
-	_Bool	it_legit;	
 	char	(*get_value)(t_map *, t_point);
 	int		(*set_value)(t_map *, t_point, char);
+	int		collectible_count;
 }	t_map;
 
 typedef union

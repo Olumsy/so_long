@@ -33,8 +33,9 @@ int	ft_read_map(t_map *map, int fd)
 	while (map->array[y])
 	{
 		if ((int) ft_strlen(map->array[y++]) != len)
-			return (-1);
+			return (1);
 	}
 	map->max = (t_point) {len, y};
+	map->collectible_count = ft_countchar_2d(map, 'C');
 	return (0);
 }

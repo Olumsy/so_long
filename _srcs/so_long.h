@@ -13,7 +13,9 @@
 void	ft_map_init(t_map *map);
 int		ft_read_map(t_map *map, int fd);
 int		ft_backtracking(t_map *map);
+int		ft_parsing(t_map *map);
 
 t_point ft_findchr_2d(t_map *map, char c);
 char	**ft_strdup_2d(t_map *map);
+int		ft_countchar_2d(t_map *map, char c);
 #endif
