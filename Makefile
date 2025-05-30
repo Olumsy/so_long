@@ -28,10 +28,12 @@ OBJ_DIR  	:= _objs
 # Files
 NAME	 	 	:= so_long
 SRC_FILES		:= main.c \
-					map.c \
+					map1.c \
+					map2.c \
 					read_map.c \
 					so_long.c \
 					backtracking.c \
+					parsing.c \
 					
 					
 HEADER_FILES	:= so_long.h
