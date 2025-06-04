@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include "./structures.h"
 # include "./../libft/_srcs/libft.h"
+# include "./../minilibx-linux/mlx.h"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif

@@ -60,7 +60,7 @@ int	ft_parsing(t_map *map)
 	ft_check_in_whitelist(map, "01PEC") || \
 	ft_countchar_2d(map, 'E') != 1);
 }
-
+/*
 #include <stdio.h>
 int	main(int argc, char **argv)
 {
@@ -89,3 +89,4 @@ int	main(int argc, char **argv)
 
 	return (0);
 }
+*/

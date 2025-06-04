@@ -22,7 +22,7 @@ AR		:= ar rcs
 # Directories
 SRC_DIR   	:= _srcs
 HEADER_DIR	:= .
-SUBDIRS		:= libft
+SUBDIRS		:= minilibx-linux libft 
 OBJ_DIR  	:= _objs
 
 # Files
@@ -42,7 +42,7 @@ OBJ_FILES		:= $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
 # Macro to run target in all subdirs
 define run_on_subdirs
 	@for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir $(1) --no-print-directory; \
+		$(MAKE) -C $$dir $(1) --no-print-directory || echo "> No rule '$(1)' in $$dir (ignored)"; \
 	done
 endef
 

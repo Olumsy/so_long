@@ -62,6 +62,7 @@ SRC_FILES		:=	ft_atoi.c \
 					ft_strtrim.c \
 					ft_substr.c \
 					ft_tolower.c \
+					ft_werror.c \
 					ft_toupper.c
 HEADER_FILES	:= libft.h
 OBJ_FILES		:= $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
