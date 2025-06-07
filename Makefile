@@ -24,15 +24,17 @@ SRC_DIR   	:= _srcs
 HEADER_DIR	:= .
 SUBDIRS		:= minilibx-linux libft 
 OBJ_DIR  	:= _objs
-
+MLX_DIR = minilibx-linux
+MLX = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 # Files
 NAME	 	 	:= so_long
-SRC_FILES		:= main.c \
-					map1.c \
+SRC_FILES		:=	map1.c \
 					map2.c \
 					read_map.c \
+					input_management.c \
 					so_long.c \
 					backtracking.c \
+					point.c \
 					parsing.c \
 					
 					
@@ -52,12 +54,11 @@ all:		$(NAME)
 $(NAME):	$(OBJ_DIR) $(OBJ_FILES)
 			@echo "Creating $(NAME)\n"
 			$(call run_on_subdirs,all)
-			@$(CC) -o $(NAME) $(OBJ_FILES) libft/libft.a
-
+			@$(CC) -o $(NAME) $(OBJ_FILES) libft/libft.a $(MLX) -L$(MLX_DIR)
 # Compilation of source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 			@echo "Compiling $<"
-			@$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 # Creating necessary directories
 $(OBJ_DIR):

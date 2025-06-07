@@ -1,5 +1,5 @@
 
-typedef struct s_map t_map;
+typedef struct s_map	t_map;
 
 typedef struct s_point
 {
@@ -16,7 +16,7 @@ typedef struct s_map
 	int		collectible_count;
 }	t_map;
 
-typedef union
+typedef union u_cardinal
 {
 	struct
 	{
@@ -26,4 +26,4 @@ typedef union
 		char	right;
 	} s_dir;
 	char	dirs[4];
-}	u_cardinal;
+}	t_cardinal;

@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 		ft_backtracking(&map))
 		return (close(fd), ft_free_2d(&map.array), ft_werror("jack"), 1);
 	//mlx here
-	ft_gameloop(&map, &mlx);
+	mlx_init();
+	
+	//ft_gameloop(&map, &mlx);
 	return (0);
 }

@@ -48,7 +48,7 @@ char	**ft_strdup_2d(t_map *map)
 	int		y;
 	char	**dup;
 
-	dup = malloc(sizeof(char *) * map->max.y);
+	dup = malloc(sizeof(char *) * map->max.y + 1);
 	if (!dup)
 		return (NULL);
 	y = 0;

@@ -5,8 +5,8 @@
 static t_point	ft_advance(t_map *map, t_point *pos)
 {
 	t_point		nhbr;
-	u_cardinal	x;
-	u_cardinal	y;
+	t_cardinal	x;
+	t_cardinal	y;
 	int			i;
 
 	x.s_dir = (typeof(x.s_dir)) {0, 0, -1, 1};
