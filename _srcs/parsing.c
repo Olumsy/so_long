@@ -13,11 +13,11 @@ static int	ft_check_walls(t_map *map)
 	while (map->array[0][i])
 		if (map->array[map->max.y - 1][i++] != '1')
 			return (1);
-	i = 0
+	i = 0;
 	while (i < map->max.y - 1)
 	{
 		if (map->array[i][0] != '1' || map->array[i][map->max.x - 1] != '1')
-			return (1)
+			return (1);
 		i++;
 	}
 	return (0);
