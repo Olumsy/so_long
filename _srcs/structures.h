@@ -1,6 +1,15 @@
 
 typedef struct s_map	t_map;
 
+typedef enum e_keys
+{
+    KEY_W     = 119,
+    KEY_A     = 97,
+    KEY_S     = 115,
+    KEY_D     = 100,
+    KEY_ESC   = 65307,
+}   t_keys;
+
 typedef struct s_point
 {
 	int	x;
@@ -27,3 +36,9 @@ typedef union u_cardinal
 	} s_dir;
 	char	dirs[4];
 }	t_cardinal;
+
+typedef struct s_context
+{
+	t_map	*map;
+	mlx		win;
+}	t_context;
