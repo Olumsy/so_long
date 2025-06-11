@@ -21,10 +21,12 @@ static int	set_value(t_map *map, t_point coord, char value)
 void	ft_map_init(t_map *map)
 {
 	map->array = NULL;
-	map->max = (t_point){0, 0};
 	map->get_value = get_value;
 	map->set_value = set_value;
+	map->max = (t_point){0, 0};
+	map->player_pos = (t_point){-1, -1};
 	map->collectible_count = 0;
+	map->under_player = '0';
 }
 
 t_point	ft_findchr_2d(t_map *map, char c)

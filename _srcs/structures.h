@@ -19,9 +19,11 @@ typedef struct s_point
 typedef struct s_map
 {
 	char	**array;
-	t_point	max;
 	char	(*get_value)(t_map *, t_point);
 	int		(*set_value)(t_map *, t_point, char);
+	t_point	max;
+	t_point	player_pos;
+	char	under_player;
 	int		collectible_count;
 }	t_map;
 
@@ -40,5 +42,6 @@ typedef union u_cardinal
 typedef struct s_context
 {
 	t_map	*map;
-	mlx		win;
+	void	*mlx;
+	void	*win;
 }	t_context;

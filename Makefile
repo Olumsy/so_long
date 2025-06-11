@@ -15,7 +15,7 @@
 # ======================================================================= #
 # Compiler and Flags
 CC		:= cc
-CFLAGS	:= -Wall -Wextra -Werror -I. -g
+CFLAGS	= -Wall -Wextra -Werror -I. -g -fsanitize=address
 RM		:= rm -rf
 AR		:= ar rcs
 
@@ -35,6 +35,7 @@ SRC_FILES		:=	map1.c \
 					so_long.c \
 					backtracking.c \
 					point.c \
+					graphics.c \
 					parsing.c \
 					
 					

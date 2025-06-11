@@ -36,6 +36,7 @@ int	ft_read_map(t_map *map, int fd)
 			return (1);
 	}
 	map->max = (t_point) {len, y};
+	map->player_pos = ft_findchr_2d(map, 'P');
 	map->collectible_count = ft_countchar_2d(map, 'C');
 	return (0);
 }
