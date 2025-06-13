@@ -1,10 +1,24 @@
 #include "./so_long.h"
 #include <stdio.h>
 
+int	key_hook(int keycode, t_context *context)
+{
+	printf("key = %d\n", keycode);
+	ft_key_listener(keycode, context);
+	int	i = 0;
+	while (context->map->array[i])
+	{
+		printf("%s\n", context->map->array[i++]);
+	}
+	printf("\n");
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;
 	t_map	map;
+	t_context	context;
 	void	*mlx;
 	void	*win;
 
@@ -18,12 +32,14 @@ int	main(int argc, char **argv)
 		ft_parsing(&map) || \
 		ft_backtracking(&map))
 		return (close(fd), ft_free_2d(&map.array), ft_werror("jack"), 1);
-	//mlx here
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, SPRITE_SIZE * 3, SPRITE_SIZE * 3, "So_long");
-	ft_draw_game((t_context){&map, &mlx, &win}, (t_point){0, 0});
-	while (1)
-		;
+	win = mlx_new_window(mlx, SPRITE_SIZE * 5, SPRITE_SIZE * 5, "So_long");
+	context = (t_context){&map, mlx, win};
+	ft_draw_game(context, ft_sum_point(map.player_pos, (t_point){-2, -2}));
+
+	mlx_key_hook(win, key_hook, &context);
+	//mlx_key_hook(win, ft_key_listener, &context);
+	mlx_loop(mlx);
 	//ft_gameloop(&map, &mlx);
 	return (0);
 }
