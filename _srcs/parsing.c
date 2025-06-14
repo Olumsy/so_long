@@ -54,39 +54,15 @@ static int	ft_check_in_whitelist(t_map *map, char *wlist)
 
 int	ft_parsing(t_map *map)
 {
-	return (ft_check_walls(map) || \
-	ft_countchar_2d(map, 'P') != 1 || \
-	ft_countchar_2d(map, 'C') < 1 || \
-	ft_check_in_whitelist(map, "01PEC") || \
-	ft_countchar_2d(map, 'E') != 1);
-}
-/*
-#include <stdio.h>
-int	main(int argc, char **argv)
-{
-	int	fd;
-	t_map	map;
-	t_point	current;
-
-	(void) argc;
-	ft_map_init(&map);
-	fd = open(argv[1], O_RDONLY);
-	
-	printf("> reading ? %d\n", ft_read_map(&map, fd));
-	int	i = 0;
-	while (map.array[i])
-	{
-		printf("%s\n", map.array[i++]);
-	}
-	printf("> max value: {%d, %d}\n", map.max.x, map.max.y);
-	printf("> parsing ? %d\n", ft_parsing(&map));
-	printf("> backtracking ? %d\n", ft_backtracking(&map));
-
-	while (scanf("%d%d", &current.x, &current.y))
-	{
-		printf("> {%d, %d} %c\n", current.x, current.y, map.get_value(&map, current));
-	}
-
+	if (ft_check_walls(map))
+		return (ft_werror(" ERROR: Map must be surrounded by walls.\n"), 1);
+	if (ft_countchar_2d(map, 'P') != 1) 
+		return (ft_werror(" ERROR: Map must have 1 player.\n"), 1);
+	if (ft_countchar_2d(map, 'C') < 1) 
+		return (ft_werror(" ERROR: Map must have 1+ collectible(s).\n"), 1);
+	if (ft_check_in_whitelist(map, "01PEC"))
+		return (ft_werror(" ERROR: Map charset is \"01PEC\".\n"), 1);
+	if (ft_countchar_2d(map, 'E') != 1)
+		return (ft_werror(" ERROR: Map must have 1 exit.\n"), 1);
 	return (0);
 }
-*/

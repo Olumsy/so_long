@@ -31,14 +31,6 @@ static int	ft_flood(t_map *map, t_point current)
 
 	count = 0;
 	map->set_value(map, current, '1');
-	/*
-	int	i = 0;
-	while (map->array[i])
-	{
-		printf("%s\n", map->array[i++]);
-	}
-	printf("\n");
-	*/
 	while (count < 4)
 	{
 		count++;
@@ -60,5 +52,6 @@ int	ft_backtracking(t_map *src)
 	ft_flood(&map, ft_findchr_2d(&map, 'P'));
 	rvalue = (ft_findchr_2d(&map, 'C').x >= 0 || \
 		ft_findchr_2d(&map, 'E').x >= 0);
-	return (ft_free_2d(&(map.array)), rvalue);
+	return (ft_free_2d(&(map.array)), rvalue && \
+	ft_werror(" ERROR: Map impossible.\n"), rvalue);
 }

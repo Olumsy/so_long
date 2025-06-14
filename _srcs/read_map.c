@@ -22,18 +22,40 @@ static char	*ft_get_file(int fd)
 	return (str);
 }
 
+static int	ft_check_emptyline(char *str)
+{
+	int		i;
+	char	c;
+
+	i = 0;
+	c = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n' && (c == str[i] || i == 0))
+			return (1);
+		c = str[i];
+		i++;
+	}
+	return (0);
+}
+
 int	ft_read_map(t_map *map, int fd)
 {
-	int	len;
-	int	y;
+	int		len;
+	int		y;
+	char	*temp;
 
-	map->array = ft_split(ft_get_file(fd), '\n');
+	temp = ft_get_file(fd);
+	map->array = ft_split(temp, '\n');
+	if (ft_check_emptyline(temp))
+		return (free(temp), ft_werror(" ERROR: Empty line in map.\n"), 1);
+	free(temp);
 	y = 0;
 	len = ft_strlen(map->array[y]);
 	while (map->array[y])
 	{
 		if ((int) ft_strlen(map->array[y++]) != len)
-			return (1);
+			return (ft_werror(" ERROR: Map must be a rectangle.\n"), 1);
 	}
 	map->max = (t_point) {len, y};
 	map->player_pos = ft_findchr_2d(map, 'P');
