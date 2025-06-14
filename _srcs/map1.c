@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map1.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 19:19:13 by lspiteri          #+#    #+#             */
+/*   Updated: 2025/06/14 19:19:27 by lspiteri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "./so_long.h"
 
@@ -39,10 +50,10 @@ t_point	ft_findchr_2d(t_map *map, char c)
 	{
 		x = ft_findchr(map->array[y], c);
 		if (x >= 0)
-			return ((t_point) {x, y});
+			return ((t_point){x, y});
 		y++;
 	}
-	return ((t_point) {-1, -1});
+	return ((t_point){-1, -1});
 }
 
 char	**ft_strdup_2d(t_map *map)

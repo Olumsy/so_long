@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structures.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 19:26:27 by lspiteri          #+#    #+#             */
+/*   Updated: 2025/06/14 19:27:28 by lspiteri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 typedef struct s_map	t_map;
 
 typedef enum e_keys
 {
-    KEY_W     = 119,
-    KEY_A     = 97,
-    KEY_S     = 115,
-    KEY_D     = 100,
-    KEY_ESC   = 65307,
-}   t_keys;
+	KEY_W	= 119,
+	KEY_A	= 97,
+	KEY_S	= 115,
+	KEY_D	= 100,
+	KEY_ESC	= 65307,
+}	t_keys;
 
 typedef struct s_point
 {

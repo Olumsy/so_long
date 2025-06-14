@@ -1,21 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_management.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 19:16:35 by lspiteri          #+#    #+#             */
+/*   Updated: 2025/06/14 19:18:37 by lspiteri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "./so_long.h"
 
 static t_point	ft_get_vector(int up, int down, int left, int right)
 {
-	return ((t_point) {right - left, down - up});
+	return ((t_point){right - left, down - up});
 }
 
-static int	ft_player_movement(int	key, t_context context)
+static int	ft_player_movement(int key, t_context context)
 {
 	t_point	new_pos;
-	_Bool		moved;
-	t_map		*map;
+	_Bool	moved;
+	t_map	*map;
 
 	map = context.map;
 	if (key)
 	{
-		new_pos = ft_sum_point(map->player_pos, ft_get_vector( \
+		new_pos = ft_sum_point(map->player_pos, ft_get_vector(\
 		KEY_W == key, KEY_S == key, KEY_A == key, KEY_D == key));
 		if (map->get_value(map, new_pos) == '1')
 			return (0);
@@ -31,12 +42,11 @@ static int	ft_player_movement(int	key, t_context context)
 		map->set_value(map, new_pos, 'P');
 		mlx_clear_window(context.mlx, context.win);
 		ft_draw_game(context, ft_sum_point(map->player_pos, (t_point){-2, -2}));
-		return (moved);
 	}
-	return (0);
+	return (moved);
 }
 
-int	ft_key_listener(int	keycode, t_context *context)
+int	ft_key_listener(int keycode, t_context *context)
 {
 	static int	steps;
 
@@ -47,7 +57,7 @@ int	ft_key_listener(int	keycode, t_context *context)
 		ft_putstr("\n");
 	}
 	if (keycode == KEY_ESC || (context->map->under_player == 'E' && \
-		 context->map->collectible_count == 0))
+		context->map->collectible_count == 0))
 	{
 		mlx_loop_end(context->mlx);
 		return (0);

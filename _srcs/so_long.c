@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 19:21:45 by lspiteri          #+#    #+#             */
+/*   Updated: 2025/06/14 19:24:52 by lspiteri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./so_long.h"
 
 static int	ft_check_map_name(char *str, char *ext)
@@ -22,15 +34,13 @@ static int	ft_check_map_name(char *str, char *ext)
 
 int	main(int argc, char **argv)
 {
-	int		fd;
-	t_map	map;
+	int			fd;
+	t_map		map;
+	void		*mlx;
+	void		*win;
 	t_context	context;
-	void	*mlx;
-	void	*win;
 
-	if (argc != 2)
-		return (1);
-	if (ft_check_map_name(argv[1], ".ber"))
+	if (argc != 2 || ft_check_map_name(argv[1], ".ber"))
 		return (1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
@@ -44,11 +54,8 @@ int	main(int argc, char **argv)
 	win = mlx_new_window(mlx, SPRITE_SIZE * 5, SPRITE_SIZE * 5, "So_long");
 	context = (t_context){&map, mlx, win};
 	ft_draw_game(context, ft_sum_point(map.player_pos, (t_point){-2, -2}));
-
 	mlx_key_hook(win, ft_key_listener, &context);
 	mlx_loop(mlx);
-	mlx_destroy_window(mlx, win);
-    mlx_destroy_display(mlx);
-    free(mlx);
-	return (ft_free_2d(&map.array), 0);
+	return (mlx_destroy_window(mlx, win), mlx_destroy_display(mlx), \
+	free(mlx), ft_free_2d(&map.array), 0);
 }

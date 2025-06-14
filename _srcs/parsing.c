@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 19:19:57 by lspiteri          #+#    #+#             */
+/*   Updated: 2025/06/14 19:20:30 by lspiteri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "./so_long.h"
 
@@ -42,7 +53,7 @@ static int	ft_check_in_whitelist(t_map *map, char *wlist)
 			{
 				if (i == len)
 					return (1);
-				if (map->get_value(map, (t_point) {x, y}) == wlist[i++])
+				if (map->get_value(map, (t_point){x, y}) == wlist[i++])
 					break ;
 			}
 			x++;
@@ -56,9 +67,9 @@ int	ft_parsing(t_map *map)
 {
 	if (ft_check_walls(map))
 		return (ft_werror(" ERROR: Map must be surrounded by walls.\n"), 1);
-	if (ft_countchar_2d(map, 'P') != 1) 
+	if (ft_countchar_2d(map, 'P') != 1)
 		return (ft_werror(" ERROR: Map must have 1 player.\n"), 1);
-	if (ft_countchar_2d(map, 'C') < 1) 
+	if (ft_countchar_2d(map, 'C') < 1)
 		return (ft_werror(" ERROR: Map must have 1+ collectible(s).\n"), 1);
 	if (ft_check_in_whitelist(map, "01PEC"))
 		return (ft_werror(" ERROR: Map charset is \"01PEC\".\n"), 1);

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/14 19:21:15 by lspiteri          #+#    #+#             */
+/*   Updated: 2025/06/14 19:31:01 by lspiteri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "./so_long.h"
 
@@ -47,6 +58,8 @@ int	ft_read_map(t_map *map, int fd)
 
 	temp = ft_get_file(fd);
 	map->array = ft_split(temp, '\n');
+	if (ft_strlen(temp) == 0)
+		return (free(temp), ft_werror(" ERROR: Empty map.\n"), 1);
 	if (ft_check_emptyline(temp))
 		return (free(temp), ft_werror(" ERROR: Empty line in map.\n"), 1);
 	free(temp);
@@ -57,7 +70,7 @@ int	ft_read_map(t_map *map, int fd)
 		if ((int) ft_strlen(map->array[y++]) != len)
 			return (ft_werror(" ERROR: Map must be a rectangle.\n"), 1);
 	}
-	map->max = (t_point) {len, y};
+	map->max = (t_point){len, y};
 	map->player_pos = ft_findchr_2d(map, 'P');
 	map->collectible_count = ft_countchar_2d(map, 'C');
 	return (0);
