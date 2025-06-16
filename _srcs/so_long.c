@@ -32,6 +32,12 @@ static int	ft_check_map_name(char *str, char *ext)
 	return (ft_werror(" ERROR: Map must be \"[map_name].ber\".\n"), 1);
 }
 
+static int	ft_handle_cross(void *mlx)
+{
+	mlx_loop_end(mlx);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	int			fd;
@@ -47,7 +53,7 @@ int	main(int argc, char **argv)
 		return (ft_werror(" ERROR: Invalid map path.\n"), 1);
 	ft_map_init(&map);
 	if (ft_read_map(&map, fd) || \
-		ft_parsing(&map) || \
+ ft_parsing(&map) || \
 		ft_backtracking(&map))
 		return (close(fd), ft_free_2d(&map.array), 1);
 	mlx = mlx_init();
@@ -55,6 +61,7 @@ int	main(int argc, char **argv)
 	context = (t_context){&map, mlx, win};
 	ft_draw_game(context, ft_sum_point(map.player_pos, (t_point){-2, -2}));
 	mlx_key_hook(win, ft_key_listener, &context);
+	mlx_hook(win, 17, 0, ft_handle_cross, mlx);
 	mlx_loop(mlx);
 	return (mlx_destroy_window(mlx, win), mlx_destroy_display(mlx), \
 	free(mlx), ft_free_2d(&map.array), 0);
