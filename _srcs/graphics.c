@@ -6,7 +6,7 @@
 /*   By: lspiteri <lspiteri@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 19:14:19 by lspiteri          #+#    #+#             */
-/*   Updated: 2025/06/14 19:15:37 by lspiteri         ###   ########.fr       */
+/*   Updated: 2025/06/18 20:50:17 by lspiteri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,12 @@ static void	ft_sprites_init(void *mlx, void *sprites[6])
 	(sprites[5]) = NULL;
 }
 
-int	ft_draw_game(t_context context, t_point start)
+static int	ft_put_image(t_context context, t_point start, void *sprites[6])
 {
-	static void	*sprites[6] = {NULL};
-	int			sprite_index;
-	int			i;
-	char		c;
+	int		i;
+	int		sprite_index;
+	char	c;
 
-	if (!*sprites)
-		ft_sprites_init(context.mlx, sprites);
 	i = 0;
 	while (i < 25)
 	{
@@ -48,5 +45,23 @@ int	ft_draw_game(t_context context, t_point start)
 		}
 		i++;
 	}
+	return (0);
+}
+
+int	ft_draw_game(t_context context, t_point start, _Bool end)
+{
+	static void	*sprites[6] = {NULL};
+	int			i;
+
+	i = 0;
+	if (end)
+	{
+		while (sprites[i])
+			mlx_destroy_image(context.mlx, sprites[i++]);
+		return (0);
+	}
+	if (!*sprites)
+		ft_sprites_init(context.mlx, sprites);
+	ft_put_image(context, start, sprites);
 	return (0);
 }
